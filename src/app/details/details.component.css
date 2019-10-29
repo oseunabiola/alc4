@@ -1,0 +1,40 @@
+main {
+  color: white;
+}
+.moviePoster img {
+  max-width: 100%;
+}
+.movieDetails {
+  padding: 2% 5%;
+}
+.label {
+  color: #333;
+  font-weight: 500;
+  display: inline-block;
+  margin: 0;
+}
+.fa-heart, .fa-link, .vote {
+  color: white;
+  font-size: 10px;
+  cursor: pointer;
+  border: 2px solid white;
+  padding: 10px;
+  border-radius: 50%;
+  margin-right: 1%;
+}
+.fa-heart:hover, .fa-link:hover {
+  color: red;
+  background-color: white;
+}
+.vote {
+  padding: 8.5px 4.5px;
+  font-weight: bold;
+  cursor: initial;
+}
+.genre {
+  display: inline-block;
+  margin-right: 1%;
+  padding: .5% 1.5%;
+  border: 1px solid #666;
+  border-radius: 10px;
+}

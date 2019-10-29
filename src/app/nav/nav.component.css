@@ -1,0 +1,39 @@
+.icon {
+  display: none;
+}
+@media only screen and (max-width: 800px) {
+  .icon {
+    display: block;
+  }
+}
+
+nav {
+  padding: 1.5% 1%;
+  background-color: #333;
+  margin-bottom: 5%;
+  font-weight: 400;
+}
+nav div a {
+  display: inline-block;
+  padding: 0 3%;
+  color: #D22;
+}
+  nav div a:visited {
+  color: #D22;
+}
+nav div a:hover, nav div a:active {
+  color: #fff;
+  text-decoration: none;
+}
+nav input {
+  display: inline-block;
+  padding: .3% 1%;
+  border: none;
+  color: black;
+}
+nav input::placeholder {
+  color: gray;
+}
+nav div a.active {
+  color: gray;
+}

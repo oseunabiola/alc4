@@ -1,0 +1,15 @@
+<div class="col-md-5 col" style="margin: 0 auto; text-align: center; margin-bottom: 5%;">
+          <input class="form-control" type="search" name="search" placeholder="Search" autocomplete="off" [(ngModel)]="searchText">
+</div>
+<div class="card-columns">
+    <div style="cursor: pointer;" [routerLink]="['/movies', eachMovie.id]" *ngFor="let eachMovie of allMovies  | filter:searchText" class="card col">
+        <img class="card-img-top" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{ eachMovie.poster_path }}" alt="{{ eachMovie.title }} Poster">
+        <div class="card-body">
+            <p class="card-title">{{ eachMovie.title }}</p>
+            <span class="card-text"><small><span class="label">Year: &nbsp;</span>{{ eachMovie.release_date | date:'yyyy' }}</small></span><br>
+            <span class="card-text"><small><span class="label">Genre:  &nbsp;</span>{{ eachMovie.Genre }}</small></span><br>
+            <span class="card-text"><small><span class="label">Rating:  &nbsp;</span>{{ eachMovie.vote_average }}/10</small></span>
+        </div>
+    </div>
+    
+</div>

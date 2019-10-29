@@ -1,0 +1,60 @@
+<main>
+  <div class="row" style="padding: 0 0 5% 2.4%;">
+    <div class="moviePoster col-md-3">
+      <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{ aMovie.poster_path }}" alt="{{ aMovie.title }} Poster">
+    </div>
+    <div class="movieDetails col-md-8">
+      <h1>
+        <span style="font-weight: 500;">{{ aMovie.title }}</span>
+        <small style="color: #666;"> ({{ aMovie.release_date | date:'yyyy' }})</small>
+      </h1>
+      <p style="color: #666; font-size: small;">
+        <span *ngIf="aMovie.adult">18+ | </span> 
+        {{ aMovie.runtime }} mins | 
+        <span *ngFor="let genre of aMovie.genres">
+          <span class="genre">{{ genre.name }}</span>
+        </span>
+      </p>
+      <div style="margin-bottom: 1%;">
+        <span (click)="toggleFav(aMovie)">
+            <i *ngIf="isFav(aMovie) === true" class="fas fa-heart" title="Remove this movie from your favorite list"></i>
+            <i *ngIf="isFav(aMovie) === false" class="far fa-heart" title="Add this movie to your favorite list"></i>
+        </span>
+        <span *ngIf="toggleActionStatus.status">  &nbsp; {{ toggleActionStatus.action }}</span>
+        <a href="{{ aMovie.homepage }}" target="_blank" title="Visit homepage"><span class="fas fa-link"></span></a>
+        <!-- <span class="" title="Votes">{{ aMovie.vote_average | percent }}</span> -->
+        <span class="vote" title="Votes">{{ formatVote(aMovie.vote_average) }}</span>
+      </div>
+      <section>
+          <h2>Overview</h2>
+          <p>{{ aMovie.overview }}</p>
+      </section>
+      <section>
+        <h2>Actors</h2>
+        <p>{{ aMovie.Actors }}</p>  
+      </section>
+    </div> 
+  </div>
+  <div class="row otherDetails" style="background-color: #888; padding: 2% 0 5% 2.6%;">
+    <h2 class="col-md-12">Facts</h2>
+      <div class="col-md-5">
+        <p class="label">Status</p>
+        <p>{{ aMovie.status }}</p>
+        <p class="label">Release Date:</p>
+        <p>{{ aMovie.release_date | date }}</p>
+        <p><strong>Ratings:</strong></p>
+        <div *ngFor="let eachRating of aMovie.Ratings">
+          <p class="label">{{ eachRating.source }}</p>
+          <p>{{ eachRating.value }}</p>
+        </div>
+      </div>
+      <div class="col-md-5 col-md-offset-2">
+          <p class="label">Budget</p>
+          <p>{{ aMovie.budget | currency:'USD' }}</p>
+          <p class="label">Revenue</p>
+          <p>{{ aMovie.revenue | currency:'USD' }}</p>
+          <p class="label">Original Language</p>
+          <p>{{ aMovie.original_language }}</p>    
+      </div>
+  </div>
+</main>

@@ -1,0 +1,11 @@
+<div class="card-columns">
+    <div style="cursor: pointer;" [routerLink]="['/movies', fav.id]" *ngFor="let fav of allFavs" class="card col">
+        <img class="card-img-top" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{ fav.poster_path }}" alt="{{ fav.title }} Poster">
+        <div class="card-body">
+            <p class="card-title">{{ fav.title }}</p>
+            <span class="card-text"><small><span class="label">Year: &nbsp;</span>{{ fav.release_date | date:'yyyy' }}</small></span><br>
+            <span class="card-text"><small><span class="label">Genre:  &nbsp;</span>{{ fav.Genre }}</small></span><br>
+            <span class="card-text"><small><span class="label">Rating:  &nbsp;</span>{{ fav.vote_average }}/10</small></span>
+        </div>
+    </div>        
+</div>

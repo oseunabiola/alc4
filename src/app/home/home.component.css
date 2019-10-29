@@ -1,0 +1,24 @@
+* {
+    color: #fff;
+}
+.card {
+    background-color: transparent;
+    border: 1px solid #333;
+    padding:0;
+    margin-bottom: 10%;
+}
+.card-columns {
+    margin: 0 auto;
+    text-align: center;
+    width: 90%;
+}
+.card-title {
+    font-weight: 400;
+    color: #D22;
+    font-size: large;
+}
+.label {
+    color: #666;
+    font-style: italic;
+    display: inline-block;
+}
