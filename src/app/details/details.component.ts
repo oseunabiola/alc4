@@ -32,7 +32,7 @@ export class DetailsComponent implements OnInit {
     this.id = +this.route.snapshot.paramMap.get('id');
     this.aMovie = this.getMovie(this.id);
     this.favoritesService.getFavs();
-    this.isFav(this.id);
+    this.isFav(this.aMovie);
     console.log('This movie is a fav  ' + this._isFav);
     console.log(this.toggleFavIcon);
   }
