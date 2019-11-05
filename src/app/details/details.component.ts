@@ -1,9 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService } from '../movie.service';
-// import { FavoritesService } from '../favorites/favorites.service';
 import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
 import { DetailedMovie } from '../movies';
+import { ToastrService } from 'ngx-toastr';
 
 
 const STORAGE_KEY = 'user_favs';
@@ -25,6 +25,7 @@ export class DetailsComponent implements OnInit {
    constructor(
   public movieService: MovieService,
   private route: ActivatedRoute,
+  private toastr: ToastrService,
   @Inject(SESSION_STORAGE) private storageService: StorageService
   ) { }
 
@@ -41,6 +42,7 @@ export class DetailsComponent implements OnInit {
     this.currentFavs.push(movie);
     this.storageService.set(STORAGE_KEY, this.currentFavs);
     console.log('added to fav');
+    this.toastr.success("Added", "Movie added to fav list");
   }
   removeFav(movieId: number) {
       const favIdIndex = this.storageService.get(STORAGE_KEY).findIndex(e => e.id === movieId);
@@ -48,6 +50,7 @@ export class DetailsComponent implements OnInit {
       this.currentFavs.splice(favIdIndex, 1);
       this.storageService.set(STORAGE_KEY, this.currentFavs);
       console.log('removed from fav');
+      this.toastr.success("Removed", "Movie removed from fav list");
   }
   toggleFav(movie: object, movieId: number) {
       if (this.toggleFavIcon === 'add') {

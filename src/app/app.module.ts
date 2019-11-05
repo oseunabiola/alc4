@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { RouterModule } from '@angular/router';
 import { StorageServiceModule } from 'angular-webstorage-service';
+import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
+
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -26,7 +28,9 @@ import { DetailsRouteActivator } from './details/details-route-activator';
     RouterModule.forRoot(routes),
     HttpClientModule,
     Ng2SearchPipeModule,
-    StorageServiceModule
+    StorageServiceModule,
+    ToastrModule.forRoot(),
+    ToastNoAnimationModule.forRoot()
   ],
   declarations: [
     AppComponent,

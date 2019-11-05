@@ -20,7 +20,7 @@
             <i *ngIf="isFav(aMovie.id) === true" class="fas fa-heart" title="Remove this movie from your favorite list"></i>
             <i *ngIf="isFav(aMovie.id) === false" class="far fa-heart" title="Add this movie to your favorite list"></i>
         </span>
-        <span *ngIf="toggleActionStatus.status">  &nbsp; {{ toggleActionStatus.action }}</span>
+        
         <a href="{{ aMovie.homepage }}" target="_blank" title="Visit homepage"><span class="fas fa-link"></span></a>
         <!-- <span class="" title="Votes">{{ aMovie.vote_average | percent }}</span> -->
         <span class="vote" title="Votes">{{ formatVote(aMovie.vote_average) }}</span>
