@@ -4,6 +4,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 A mini-netflix app. This app gets a list of movies from an API call. Users are able to click each movie on the list to check the details of the selected movie. Users are also able to add a movie to their favorite list (this is stored in the browser storage)
 
+This app requires ng2-search-filter and angular-webstorage-service
+
+npm i ng2-search-filter --save
+npm install --save angular-webstorage-service
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

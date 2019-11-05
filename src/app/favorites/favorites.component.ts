@@ -1,7 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
-import { FavoritesService } from './favorites.service';
+import { DetailedMovie } from '../movies';
 
+const STORAGE_KEY = 'user_favs';
 
 @Component ({
     selector: 'app-favorites',
@@ -11,12 +12,11 @@ import { FavoritesService } from './favorites.service';
 
 export class FavoritesComponent implements OnInit {
     allFavs: any[] = [];
-    allMovies;
-    constructor(
-        private favoritesService: FavoritesService, @Inject(SESSION_STORAGE) private storageService: StorageService
-    ) {}
+    currentFavs: DetailedMovie[] = this.storageService.get(STORAGE_KEY) || [];
+    constructor(@Inject(SESSION_STORAGE) private storageService: StorageService) {}
 
     ngOnInit() {
-        this.allFavs = this.favoritesService.getFavs();
+        this.allFavs = this.currentFavs;
+        console.log(this.allFavs);
     }
 }

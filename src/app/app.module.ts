@@ -16,7 +16,6 @@ import { routes } from './routes';
 import { MovieService } from './movie.service';
 import { Error404Component } from './errors/404.component';
 import { DetailsRouteActivator } from './details/details-route-activator';
-import { FavoritesService } from './favorites/favorites.service';
 
 
 
@@ -41,7 +40,6 @@ import { FavoritesService } from './favorites/favorites.service';
   providers: [
     MovieService,
     DetailsRouteActivator,
-    FavoritesService
   ],
   bootstrap:    [ AppComponent ]
 })

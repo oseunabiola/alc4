@@ -1,8 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService } from '../movie.service';
-import { FavoritesService } from '../favorites/favorites.service';
+// import { FavoritesService } from '../favorites/favorites.service';
 import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
+
 
 const STORAGE_KEY = 'user_favs';
 
@@ -23,16 +24,13 @@ export class DetailsComponent implements OnInit {
    constructor(
   private movieService: MovieService,
   private route: ActivatedRoute,
-  private favoritesService: FavoritesService, @Inject(SESSION_STORAGE) private storageService: StorageService
+  @Inject(SESSION_STORAGE) private storageService: StorageService
   ) { }
 
   ngOnInit() {
-    console.log(this.currentFavs);
     this.aMovie = this.getMovie(+this.route.snapshot.paramMap.get('id'));
-    this.favoritesService.getFavs();
     this.isFav(this.aMovie.id);
-    console.log('This movie is a fav  ' + this._isFav);
-    console.log(this.toggleFavIcon);
+    // console.log('This movie is a fav  ' + this._isFav);
   }
   getMovie(id: number) {
     return this.movieService.getMovie(id).subscribe(response => this.aMovie = response);
@@ -42,24 +40,23 @@ export class DetailsComponent implements OnInit {
     this.currentFavs.push(movie);
     this.storageService.set(STORAGE_KEY, this.currentFavs);
     console.log('added to fav');
-    console.log(this.currentFavs);
   }
-  removeFav(movie: object) {
-      const favIdIndex = this.storageService.get(STORAGE_KEY).indexOf(movie);
+  removeFav(movie: object, movieId: number) {
+      const favIdIndex = this.storageService.get(STORAGE_KEY).findIndex(e => e.id === movieId);
       this.storageService.remove(STORAGE_KEY);
       this.currentFavs.splice(favIdIndex, 1);
       this.storageService.set(STORAGE_KEY, this.currentFavs);
       console.log('removed from fav');
-      console.log(this.currentFavs);
+      console.log(favIdIndex);
   }
-  toggleFav(movie: object) {
+  toggleFav(movie: object, movieId: number) {
       if (this.toggleFavIcon === 'add') {
           this.addFav(movie);
           this.toggleActionStatus.status = true;
           this.toggleActionStatus.action = 'Added to fav list';
           this.toggleFavIcon = 'remove';
       } else {
-          this.removeFav(movie);
+          this.removeFav(movie, movieId);
           this.toggleActionStatus.status = true;
           this.toggleActionStatus.action = 'Removed from fav list';
           this.toggleFavIcon = 'add';
@@ -67,7 +64,7 @@ export class DetailsComponent implements OnInit {
       return this.toggleActionStatus;
   }
   isFav(movieId: number) {
-      if (this.currentFavs.find((e) => e.id === movieId) === undefined) {
+      if (this.currentFavs.findIndex((e) => e.id === movieId) === -1) {
           this._isFav = false;
           this.toggleFavIcon = 'add';
       } else {

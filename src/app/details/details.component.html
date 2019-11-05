@@ -16,7 +16,7 @@
         </span>
       </p>
       <div style="margin-bottom: 1%;">
-        <span (click)="toggleFav(aMovie)">
+        <span (click)="toggleFav(aMovie, aMovie.id)">
             <i *ngIf="isFav(aMovie.id) === true" class="fas fa-heart" title="Remove this movie from your favorite list"></i>
             <i *ngIf="isFav(aMovie.id) === false" class="far fa-heart" title="Add this movie to your favorite list"></i>
         </span>

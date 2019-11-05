@@ -1,3 +1,6 @@
-* {
-    color: white;
+.label {
+    color: #333;
+    font-weight: 500;
+    display: inline-block;
+    margin: 0;
 }

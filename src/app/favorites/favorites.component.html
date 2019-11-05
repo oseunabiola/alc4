@@ -1,11 +1,13 @@
-<div class="card-columns">
-    <div style="cursor: pointer;" [routerLink]="['/movies', fav.id]" *ngFor="let fav of allFavs" class="card col">
-        <img class="card-img-top" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{ fav.poster_path }}" alt="{{ fav.title }} Poster">
-        <div class="card-body">
-            <p class="card-title">{{ fav.title }}</p>
-            <span class="card-text"><small><span class="label">Year: &nbsp;</span>{{ fav.release_date | date:'yyyy' }}</small></span><br>
-            <span class="card-text"><small><span class="label">Genre:  &nbsp;</span>{{ fav.Genre }}</small></span><br>
-            <span class="card-text"><small><span class="label">Rating:  &nbsp;</span>{{ fav.vote_average }}/10</small></span>
+<div class="container" style="min-width: 95%; padding: 0;">
+    <div *ngIf="allFavs.length === 0" style="color: white; text-align: center;">Favorite movies will appear here</div>
+    <div style="display: inline-block; vertical-align:top; width: 31%; background-color: white; cursor: pointer; border-radius: 10px; margin: 0 1% 2% 1%" *ngFor="let fav of allFavs" [routerLink]="['/movies', fav.id]">
+        <div style="width: 20%; display: inline-block; vertical-align: top">
+            <img style="width:100%; height: auto; border-radius: 10px 0 0 10px;" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{ fav.poster_path }}" alt="{{ fav.title }} Poster">
         </div>
-    </div>        
-</div>
+        <div style="width: 75%; display: inline-block; padding: 4% 1% 2% 4%;">
+            <p style="font-weight: 500; font-size: 1em;">{{ fav.title }}</p>
+            <small><span class="label">Year: &nbsp;</span>{{ fav.release_date | date:'yyyy' }} &nbsp;</small> 
+            <small><span class="label">Rating:  &nbsp;</span>{{ fav.vote_average }}/10</small>
+        </div>
+    </div>
+</div>        
