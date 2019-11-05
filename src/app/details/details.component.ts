@@ -13,7 +13,6 @@ const STORAGE_KEY = 'user_favs';
 })
 export class DetailsComponent implements OnInit {
   aMovie: any;
-  id: number;
   toggleFavIcon = '';
   toggleActionStatus = {
       status: false,
@@ -29,10 +28,9 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.currentFavs);
-    this.id = +this.route.snapshot.paramMap.get('id');
-    this.aMovie = this.getMovie(this.id);
+    this.aMovie = this.getMovie(+this.route.snapshot.paramMap.get('id'));
     this.favoritesService.getFavs();
-    this.isFav(this.aMovie);
+    this.isFav(this.aMovie.id);
     console.log('This movie is a fav  ' + this._isFav);
     console.log(this.toggleFavIcon);
   }
@@ -68,8 +66,8 @@ export class DetailsComponent implements OnInit {
       }
       return this.toggleActionStatus;
   }
-  isFav(movie: object) {
-      if (this.currentFavs.findIndex((e) => e === movie) === -1) {
+  isFav(movieId: number) {
+      if (this.currentFavs.find((e) => e.id === movieId) === undefined) {
           this._isFav = false;
           this.toggleFavIcon = 'add';
       } else {
