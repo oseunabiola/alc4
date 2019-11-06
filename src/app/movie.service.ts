@@ -12,8 +12,8 @@ export class MovieService {
   allMoviesUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${this.api_key}&language=en-US&page=1`;
     constructor(private http: HttpClient) {}
 
-    getMovies(): Observable<Movie> {
-      return this.http.get<Movie>(this.allMoviesUrl);
+    getMovies(): Observable<any> {
+      return this.http.get(this.allMoviesUrl);
     }
 
     getMovie(id: number): Observable<DetailedMovie> {
