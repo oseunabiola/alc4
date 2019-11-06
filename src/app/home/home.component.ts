@@ -15,6 +15,6 @@ export class HomeComponent implements OnInit {
     this.getAllMovies();
   }
   getAllMovies() {
-    return this.movieService.getMovies().subscribe(response => this.allMovies = response.results);
+    return this.movieService.getMovies().subscribe(response => this.allMovies = response);
   }
 }
