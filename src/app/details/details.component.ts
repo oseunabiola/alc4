@@ -42,7 +42,7 @@ export class DetailsComponent implements OnInit {
     this.currentFavs.push(movie);
     this.storageService.set(STORAGE_KEY, this.currentFavs);
     console.log('added to fav');
-    this.toastr.success("Added", "Movie added to fav list");
+    this.toastr.success('Added', 'Movie added to fav list');
   }
   removeFav(movieId: number) {
       const favIdIndex = this.storageService.get(STORAGE_KEY).findIndex(e => e.id === movieId);
@@ -50,7 +50,7 @@ export class DetailsComponent implements OnInit {
       this.currentFavs.splice(favIdIndex, 1);
       this.storageService.set(STORAGE_KEY, this.currentFavs);
       console.log('removed from fav');
-      this.toastr.success("Removed", "Movie removed from fav list");
+      this.toastr.success('Removed', 'Movie removed from fav list');
   }
   toggleFav(movie: object, movieId: number) {
       if (this.toggleFavIcon === 'add') {
