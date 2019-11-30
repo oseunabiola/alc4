@@ -18,7 +18,7 @@ This app is a training project (Google Africa Developer Scholarship - Mobile Web
 * CSS
 
 ## Installation
-To run this project, install it locally using npm
+To run this project,
 * Install Nodejs
 * Clone this repo ```git clone https://github.com/oseunabiola/alc4.git```
 * Run ```npm install``` to install the required dependencies
