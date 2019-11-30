@@ -19,6 +19,10 @@ This app is a training project (Google Africa Developer Scholarship - Mobile Web
 
 ## Installation
 To run this project, install it locally using npm
+* Install Nodejs
+* Clone this repo ```git clone https://github.com/oseunabiola/alc4.git```
+* Run ```npm install``` to install the required dependencies
+* Run ```ng serve``` for a dev server. Navigate to ```http://localhost:4200/```. The app will automatically reload if you change any of the source files.
 
 ## Features
 This app gets a list of movies from an API call. Users are able to:
@@ -27,10 +31,3 @@ This app gets a list of movies from an API call. Users are able to:
 * Click each movie on the list to check the details of the selected movie.
 * Add/remove a movie to their favorite list (this is stored in the browser storage).
 * And view all favourite movies 
-
-## Development server
-
-* Install Nodejs
-* Clone this repo ```git clone https://github.com/oseunabiola/alc4.git```
-* Run ```npm install``` to install the required dependencies
-* Run ```ng serve``` for a dev server. Navigate to ```http://localhost:4200/```. The app will automatically reload if you change any of the source files.
